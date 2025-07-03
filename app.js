@@ -9,12 +9,16 @@ function fibs() {
     prompt("Enter the number of terms in the sequence: ")
   );
 
+  console.log("🔢 Number of terms:", number);
+
   // no matter what, we always print the first two numbers!!
   if (number >= 1) {
     result.push(first);
+    console.log("📥 Added first:", first);
   }
   if (number >= 2) {
     result.push(second);
+    console.log("📥 Added second:", second);
   }
 
   // now we can start the loop from 3rd number
@@ -24,33 +28,38 @@ function fibs() {
 
     // every iteration, we need to update the first and second numbers
     // so that we can calculate the next number in the sequence
+
+    console.log(`🔁 Step ${i - 2}:`);
+    console.log(`   ➕ ${first} + ${second} = ${third}`);
+    console.log("   📥 Result now:", result);
+
     first = second;
     second = third;
   }
+  console.log("✅ Final result:", result);
+
   return result;
 }
 
-// Call the function and print the result as one line:
-const sequence = fibs();
-// Print the sequence as a single line
-console.log(sequence.join(" "));
+// const sequence = fibs();
+// console.log(sequence.join(" "));
 
 // recursive version of Fibonacci sequence
 function fibRec(number) {
-
-  // Base cases:
-  return number <= 1 // if the number is 1 / 0, return 0
-    ? 0
-    : number <= 2 // If the number is 1 or 2, return 1
-    ? 1
-    : fibRec(number - 1) + fibRec(number - 2); // Recursive case: return the sum of the two preceding numbers
+  if (number === 0) {
+    return 0;
+  } else if (number === 1) {
+    return 1;
+  } else {
+    return fibRec(number - 1) + fibRec(number - 2);
+  }
 }
 
 function fibArray(number) {
   const arr = [];
   // Generate Fibonacci numbers up to the given number
   // i = 1 because of indexing
-  for (let i = 1; i <= number; i++) {
+  for (let i = 0; i <= number; i++) {
     arr.push(fibRec(i));
   }
   return arr;

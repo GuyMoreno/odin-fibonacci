@@ -27,22 +27,22 @@ console.log(mergeSort([6, 1, 8, 5, 7, 3, 2, 4]).join(" ")); // [0, 1, 1, 2, 3, 5
 // function that merges two sorted arrays into one sorted array
 function merge(left, right) {
   const result = [];
-  let i = 0;
-  let j = 0;
+  let indexLeft = 0;
+  let indexRight = 0;
 
   // while there are elements in both arrays
-  while (i < left.length && j < right.length) {
+  while (indexLeft < left.length && indexRight < right.length) {
     // compare the current elements of both arrays
-    if (left[i] < right[j]) {
+    if (left[indexLeft] < right[indexRight]) {
       // push the smaller element to the result
-      result.push(left[i]);
-      i++;
+      result.push(left[indexLeft]);
+      indexLeft++;
     } else {
-      result.push(right[j]);
-      j++;
+      result.push(right[indexRight]);
+      indexRight++;
     }
   }
 
   // If there are remaining elements in either array, add them to the result
-  return result.concat(left.slice(i)).concat(right.slice(j));
+  return result.concat(left.slice(indexLeft)).concat(right.slice(indexRight));
 }
